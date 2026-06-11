@@ -1,3 +1,6 @@
+/* ==========================================================================
+   GLOBAL RESET & TYPOGRAPHY CORE SYSTEM
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -13,31 +16,40 @@ body {
   overflow-x: hidden;
 }
 
+/* Vertical Scrolling Background Logo Marquee */
 body::before,
 body::after {
   content: "";
   position: fixed;
-  top: -40%;
-  left: -40%;
-  width: 180%;
-  height: 180%;
+  top: 0;
+  width: 600px;
+  height: 200%;
   pointer-events: none;
   background-image: url("Assets/logo/idanlogo.jpg");
-  background-repeat: repeat;
-  background-size: 260px;
-  background-position: 0 0;
-  opacity: 0.045;
+  background-repeat: repeat-y;
+  background-size: contain;
+  opacity: 0.035;
   z-index: -1;
 }
 
 body::before {
-  transform: rotate(-22deg);
-  animation: float-right 40s linear infinite;
+  left: 5%;
+  animation: scroll-vertical-down 40s linear infinite;
 }
 
 body::after {
-  transform: rotate(22deg);
-  animation: float-left 52s linear infinite;
+  right: 5%;
+  animation: scroll-vertical-up 45s linear infinite;
+}
+
+@keyframes scroll-vertical-down {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes scroll-vertical-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
 }
 
 .container {
@@ -45,7 +57,9 @@ body::after {
   margin: 0 auto;
 }
 
-/* header */
+/* ==========================================================================
+   HEADER & APPLICATION CONTROLS
+   ========================================================================== */
 .header {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -67,24 +81,6 @@ body::after {
   vertical-align: middle;
   border-radius: 8px;
   opacity: 0.65;
-}
-
-@keyframes float-right {
-  0% {
-    transform: translate(-15%, -5%) rotate(-18deg);
-  }
-  100% {
-    transform: translate(15%, 5%) rotate(-18deg);
-  }
-}
-
-@keyframes float-left {
-  0% {
-    transform: translate(15%, 5%) rotate(18deg);
-  }
-  100% {
-    transform: translate(-15%, -5%) rotate(18deg);
-  }
 }
 
 .header p {
@@ -128,7 +124,9 @@ body::after {
   outline: none;
 }
 
-/* category section */
+/* ==========================================================================
+   CATEGORY ACCORDIONS & SECTIONS
+   ========================================================================== */
 .category {
   margin-bottom: 3rem;
 }
@@ -181,7 +179,9 @@ body::after {
   display: none;
 }
 
-/* card style */
+/* ==========================================================================
+   PACKAGE CARD DISPLAY BLOCKS
+   ========================================================================== */
 .package-card {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 32px;
@@ -317,60 +317,598 @@ body::after {
   box-shadow: 0 20px 40px rgba(136, 104, 70, 0.25);
 }
 
-footer {
-  text-align: center;
-  margin-top: 3rem;
-  font-size: 0.8rem;
-  color: #7e9ab0;
-  border-top: 1px solid #cde0e8;
-  padding-top: 2rem;
+/* ==========================================================================
+   CARD CAROUSEL DRIVER LAYOUTS
+   ========================================================================== */
+.card-carousel {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background-color: #eaeef1;
+  border-bottom: 1px solid rgba(31, 47, 61, 0.06);
 }
 
-@media (max-width: 900px) {
-  .cards-grid {
-    grid-template-columns: 1fr;
+.carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scroll-snap-align: start;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 4px 8px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+.carousel-dots .dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-dots .dot.active {
+  background: #ffffff;
+  width: 14px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   CONTACT REGION & PREMIUM BOOKING FORM ARCHITECTURE 
+   ========================================================================== */
+#contact {
+  margin-top: 5rem;
+  padding: 3rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #b08a4f;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  color: #1f2933;
+  margin-bottom: 0.5rem;
+}
+
+.section-sub {
+  color: #596576;
+  font-size: 1.05rem;
+}
+
+/* Side-by-Side Dual Column Master Layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  align-items: start;
+}
+
+.contact-info-sidebar {
+  background: rgba(255, 255, 255, 0.75);
+  padding: 2.5rem;
+  border-radius: 32px;
+  border: 1px solid rgba(31, 47, 61, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+.booking-form-wrap {
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 32px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 60px rgba(15, 23, 34, 0.06);
+  border: 1px solid rgba(176, 138, 79, 0.18);
+}
+
+.booking-form-wrap h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #17212b;
+  margin-bottom: 0.25rem;
+}
+
+.form-intro {
+  font-size: 0.9rem;
+  color: #596576;
+  margin-bottom: 1.75rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #485563;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #1f2933;
+  background: #ffffff;
+  border: 1px solid rgba(31, 47, 61, 0.15);
+  border-radius: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #b08a4f;
+  box-shadow: 0 0 0 3px rgba(176, 138, 79, 0.12);
+}
+
+.submit-booking-btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 1.1rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Lower Row Blueprint: Maps & Badge chips */
+.contact-lower-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+.map-wrap {
+  width: 100%;
+  height: 350px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(15, 23, 34, 0.05);
+  border: 1px solid rgba(31, 47, 61, 0.08);
+}
+
+.map-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.areas-serving-box {
+  background: rgba(244, 241, 236, 0.5);
+  border-radius: 28px;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  border: 1px dashed rgba(185, 147, 99, 0.25);
+}
+
+.wa-btn-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  padding: 0.95rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.2);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.wa-btn-contact:hover {
+  transform: translateY(-2px);
+  background-color: #20ba5a;
+}
+
+.contact-detail {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-detail:last-of-type {
+  margin-bottom: 0;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.contact-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: #82634d;
+  stroke-width: 2;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #82634d;
+  margin-bottom: 0.2rem;
+}
+
+.contact-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.contact-value a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-value a:hover {
+  text-decoration: underline;
+}
+
+.hours-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.hours-table td {
+  padding: 0.2rem 1rem 0.2rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.areas-label {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  color: #17212b;
+}
+
+.areas-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.area-chip {
+  background: #ffffff;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #485563;
+  border: 1px solid rgba(31, 47, 61, 0.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+/* ==========================================================================
+   PREMIUM ENTERPRISE FOOTER FRAMEWORK 
+   ========================================================================== */
+.site-footer {
+  margin-top: 6rem;
+  background: #ffffff;
+  border-top: 1px solid rgba(31, 47, 61, 0.08);
+  padding: 4.5rem 3rem 2rem 3rem;
+  border-radius: 40px 40px 0 0;
+  box-shadow: 0 -15px 40px rgba(15, 23, 34, 0.02);
+}
+
+/* Four-Column Clean Grid Distribution Layout */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 3.5rem;
+  margin-bottom: 4rem;
+  align-items: start;
+}
+
+.footer-col h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #82634d;
+  margin-bottom: 1.5rem;
+}
+
+/* Brand Anchor Identity Aesthetics */
+.brand-col .footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #17212b;
+  line-height: 1.2;
+}
+
+.brand-col .brand-tagline {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #b08a4f;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0.25rem 0 1.25rem 0;
+}
+
+.brand-col .currency-notice {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #596576;
+  max-width: 320px;
+}
+
+/* Directory Navigation Items */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.85rem;
+}
+
+.footer-links a {
+  font-size: 0.95rem;
+  color: #485563;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-links a:hover {
+  color: #b08a4f;
+}
+
+/* Regional Location Rules */
+.office-location {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #485563;
+  font-weight: 500;
+}
+
+/* Premium Interactive Media Panels */
+.social-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.social-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 0.75rem 1.1rem;
+  border-radius: 14px;
+  text-decoration: none;
+  border: 1px solid rgba(31, 47, 61, 0.04);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-link .platform-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1f2933;
+}
+
+.social-link .arrow {
+  font-size: 0.9rem;
+  color: #596576;
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover {
+  background: #ffffff;
+  border-color: rgba(176, 138, 79, 0.25);
+  box-shadow: 0 6px 16px rgba(176, 138, 79, 0.06);
+}
+
+.social-link:hover .arrow {
+  transform: translateX(3px);
+  color: #b08a4f;
+}
+
+/* Legal Bottom Boundary Section */
+.footer-bottom {
+  border-top: 1px solid rgba(31, 47, 61, 0.06);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.legal-wrap p {
+  font-size: 0.85rem;
+  color: #596576;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.legal-wrap .compliance-text {
+  font-size: 0.75rem;
+  color: #82634d;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+
+.footer-bottom .prototype-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(176, 138, 79, 0.08);
+  color: #82634d;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+}
+
+/* Global Floating Action Component Override */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #25D366;
+  color: #ffffff;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.3);
+  z-index: 999;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(37, 211, 102, 0.4);
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT BREAKPOINTS & HOOKS
+   ========================================================================== */
+@media (max-width: 1120px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .brand-col .currency-notice {
+    max-width: 100%;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 990px) {
+  .cards-grid,
+  .contact-grid, 
+  .contact-lower-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
   body {
     padding: 1rem;
   }
-
   .category-toggle {
     font-size: 1.4rem;
     padding: 0.9rem 1rem;
   }
-
   .card-header {
     padding: 1rem 1rem 0.75rem 1rem;
   }
-
   .card-body {
     padding: 1rem;
   }
-
   .package-name {
     font-size: 1.3rem;
   }
-
   .duration {
     font-size: 0.82rem;
     gap: 0.3rem;
   }
-
   .description {
     font-size: 0.88rem;
     padding: 0.5rem 0.65rem;
   }
-
   .btn {
     font-size: 0.88rem;
     padding: 0.75rem 0;
   }
-
   .price {
     font-size: 1.6rem;
+  }
+  .site-footer {
+    padding: 3.5rem 1.5rem 2rem 1.5rem;
+    border-radius: 36px 36px 0 0;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    text-align: left;
+  }
+}
+
+@media (max-width: 580px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .booking-form-wrap {
+    padding: 1.75rem;
   }
 }
 
@@ -379,26 +917,226 @@ footer {
     font-size: 1.25rem;
     padding: 0.85rem 0.9rem;
   }
-
   .package-name {
     font-size: 1.15rem;
   }
-
   .card-header,
   .card-body {
     padding-left: 0.9rem;
     padding-right: 0.9rem;
   }
-
   .price {
     font-size: 1.4rem;
   }
-
   .category {
     margin-bottom: 2rem;
   }
+}
 
-  footer {
-    font-size: 0.78rem;
+/* ==========================================================================
+   PREMIUM ENTERPRISE FOOTER FRAMEWORK (FIXED & POLISHED)
+   ========================================================================== */
+.site-footer {
+  margin-top: 8rem; /* Increased breathing room */
+  background: #ffffff;
+  border-top: 1px solid rgba(31, 47, 61, 0.06);
+  padding: 6rem 2rem 3rem 2rem;
+  border-radius: 40px 40px 0 0;
+}
+
+/* Four-Column Clean Grid Distribution Layout */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 4rem;
+  margin-bottom: 5rem;
+  align-items: start;
+}
+
+/* Section Headings - Strict Editorial Style */
+.footer-col h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em; /* Clean, spaced layout */
+  color: #a38253; /* Warm gold/bronze accent */
+  margin-bottom: 1.75rem;
+}
+
+/* Brand Anchor Identity Aesthetics */
+.brand-col .footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.brand-col .brand-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.brand-col .currency-notice {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+/* Directory Navigation Items */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #a38253;
+  transform: translateX(3px); /* Subtle luxurious interactive motion */
+}
+
+/* Regional Location Rules */
+.office-location {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+.office-location p {
+  margin-bottom: 0.25rem;
+}
+
+/* Premium Interactive Media Panels */
+.social-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.social-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+  padding: 0.85rem 1.25rem;
+  border-radius: 16px;
+  text-decoration: none;
+  border: 1px solid #f3f4f6;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-link .platform-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1f2937;
+}
+
+.social-link .arrow {
+  font-size: 0.95rem;
+  color: #9ca3af;
+  transition: transform 0.25s ease;
+}
+
+.social-link:hover {
+  background: #ffffff;
+  border-color: rgba(163, 130, 83, 0.3);
+  box-shadow: 0 10px 25px rgba(163, 130, 83, 0.05);
+}
+
+.social-link:hover .arrow {
+  transform: translateX(4px);
+  color: #a38253;
+}
+
+/* Legal Bottom Boundary Section */
+.footer-bottom {
+  border-top: 1px solid #f3f4f6;
+  padding-top: 2.5rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.legal-wrap p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #9ca3af;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.legal-wrap .compliance-text {
+  font-size: 0.72rem;
+  color: #a38253;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.3rem;
+}
+
+.footer-bottom .prototype-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(163, 130, 83, 0.06);
+  color: #a38253;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   RESPONSIVE FOOTER OVERRIDES
+   ========================================================================== */
+@media (max-width: 1120px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .site-footer {
+    padding: 4rem 1.5rem 2.5rem 1.5rem;
+    margin-top: 5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
 }

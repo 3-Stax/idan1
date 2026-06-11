@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>IDAN | Driving School Packages</title>
-  <!-- Google Fonts + refined typography -->
+  <title>IDAN | Premium Driving School</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
   <div class="header">
-    <h1>   Intensive Driving Academy Namibia
-      
-    </h1>
+    <h1>Intensive Driving Academy Namibia</h1>
     <p>professional packages · modern training · Namibia</p>
   </div>
 
@@ -22,13 +19,218 @@
     <button id="collapse-all" class="control-btn" type="button">Collapse all</button>
   </div>
 
-  <!-- All packages organised by category (raw data from PDF) -->
-  <!-- We'll inject via JS for cleaner maintenance but keep structure intact -->
   <div id="packages-root"></div>
-  <footer>
-    📍 All prices in N$ (Namibian Dollar) | Includes VAT where applicable<br>
-    ⚡ Contact us for group discounts & custom schedules — *prototype for client presentation*
-  </footer>
+
+  <section class="section section-alt" id="contact" aria-labelledby="contact-title">
+    <div class="section-header">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title" id="contact-title">Find Us Across Namibia</h2>
+      <p class="section-sub">We're here Monday to Saturday. Reach us by phone, WhatsApp, or email.</p>
+    </div>
+
+    <div class="contact-grid">
+      
+      <div class="contact-info-sidebar">
+        <a href="https://wa.me/264812345678?text=Hi%2C%20I%27d%20like%20to%20book%20a%20driving%20lesson%20in%20Windhoek.%20Can%20you%20help%3F"
+           target="_blank" rel="noopener noreferrer"
+           class="wa-btn-contact" aria-label="Open WhatsApp chat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us Now
+        </a>
+        <div class="contact-detail">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.63 19.79 19.79 0 01.12 3a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0012 13.18l.46-.46a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value"><a href="tel:+264812345678">+264 81 234 5678</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:info@idan.com.na">info@idan.com.na</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Office Hours</div>
+            <div class="contact-value">
+              <table class="hours-table" aria-label="Office hours">
+                <tr><td>Mon – Fri</td><td>07:00 – 18:00</td></tr>
+                <tr><td>Saturday</td><td>07:00 – 14:00</td></tr>
+                <tr><td>Sunday</td><td>Closed</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Independence Avenue, Windhoek<br><span style="font-weight:400;font-size:0.85rem;color:#596576;">Khomas Region, Namibia</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-form-wrap">
+        <h3>Secure Your Class</h3>
+        <p class="form-intro">Fill out your information, and our scheduling team will follow up shortly.</p>
+        
+        <form id="idan-booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="student-name">Full Name *</label>
+              <input type="text" id="student-name" required placeholder="e.g. Johannes Nekundi">
+            </div>
+            <div class="form-group">
+              <label for="student-phone">Phone Number (WhatsApp) *</label>
+              <input type="tel" id="student-phone" required placeholder="e.g. +264 81 123 4567">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="select-package">Select Package *</label>
+              <select id="select-package" required>
+                <option value="" disabled selected>Choose a program...</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="select-gearbox">Gearbox Preference</label>
+              <select id="select-gearbox">
+                <option value="Not Applicable">—</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="select-location">Training Location *</label>
+            <select id="select-location" required>
+              <option value="" disabled selected>Select city/town...</option>
+              <option value="Windhoek">Windhoek (Khomas Region)</option>
+              <option value="Keetmanshoop">Keetmanshoop (ǁKaras Region)</option>
+              <option value="Swakopmund">Swakopmund (Erongo Region)</option>
+              <option value="Katima Mulilo">Katima Mulilo (Zambezi Region)</option>
+              <option value="Gobabis">Gobabis (Omaheke Region)</option>
+              <option value="Oshakati">Oshakati (Oshana Region)</option>
+              <option value="Grootfontein">Grootfontein (Otjozondjupa Region)</option>
+              <option value="Opuwo">Opuwo (Kunene Region)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn submit-booking-btn">📅 Send Booking Request</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="contact-lower-grid">
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://maps.google.com/maps?q=Independence%20Avenue,%20Windhoek,%20Namibia&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+            allowfullscreen="" 
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Intensive Driving Academy Namibia location in Windhoek">
+          </iframe>
+        </div>
+      </div>
+      
+      <div class="areas-serving-box">
+        <div class="areas-wrap">
+          <div class="areas-label">Areas We Serve include but are not limited to:</div>
+          <div class="areas-chips" role="list" aria-label="Service areas">
+            <span class="area-chip" role="listitem">Windhoek</span>
+            <span class="area-chip" role="listitem">Keetmanshoop</span>
+            <span class="area-chip" role="listitem">Swakopmund</span>
+            <span class="area-chip" role="listitem">Katima Mulilo</span>
+            <span class="area-chip" role="listitem">Gobabis</span>
+            <span class="area-chip" role="listitem">Oshakati</span>
+            <span class="area-chip" role="listitem">Grootfontein</span>
+            <span class="area-chip" role="listitem">Opuwo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+  <div class="footer-grid">
+    
+    <div class="footer-col brand-col">
+      <div class="footer-brand">IDAN</div>
+      <div class="brand-tagline">Intensive Driving Academy Namibia</div>
+      <p class="currency-notice">
+        Setting the gold standard for road safety, advanced operator training, and elite licensing infrastructure across the Republic of Namibia.
+      </p>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Academy Directory</h4>
+      <ul class="footer-links">
+        <li><a href="#packages-root">Training Programs</a></li>
+        <li><a href="#contact">Secure Booking</a></li>
+        <li><a href="https://wa.me/264812345678" target="_blank" rel="noopener noreferrer">Licensing Hotline</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>HQ & Regions</h4>
+      <div class="office-location">
+        <p><strong>Central Campus:</strong></p>
+        <p>Independence Avenue,</p>
+        <p>Windhoek, Khomas Region</p>
+        <p style="margin-top: 0.5rem; color: #b08a4f;">Serving 8 Major Hubs Nationwide</p>
+      </div>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Digital Channels</h4>
+      <div class="social-grid">
+        <a class="social-link" href="https://www.facebook.com/IDAN" target="_blank" rel="noopener noreferrer">
+          <span class="platform-name">Facebook Network</span><span class="arrow">→</span>
+        </a>
+        <a class="social-link" href="https://www.instagram.com/IDAN" target="_blank" rel="noopener noreferrer">
+          <span class="platform-name">Instagram Profile</span><span class="arrow">→</span>
+        </a>
+        <a class="social-link" href="https://www.linkedin.com/company/idan" target="_blank" rel="noopener noreferrer">
+          <span class="platform-name">LinkedIn Corporate</span><span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="legal-wrap">
+      <p>© 2026 Intensive Driving Academy Namibia. All Rights Reserved.</p>
+      <p class="compliance-text">Certified Master Instructors · Construction Equipment Solutions</p>
+    </div>
+    <span class="prototype-tag">Corporate Presentation Framework</span>
+  </div>
+</footer>
+  
+  <a class="whatsapp-float" href="https://wa.me/264812345678?text=Hello%20IDAN%20Driving%20School" target="_blank" rel="noopener noreferrer" aria-label="Chat with a licensing expert on WhatsApp">
+    <span>💬</span>
+    <span class="whatsapp-text">WhatsApp Hotline</span>
+  </a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+  
+  
 </div>
 
 <script src="script.js"></script>
